@@ -79,6 +79,7 @@ void display() {
         vertical(x+12,y+8,0.7);
         horizontal(x+12,y+19,0.7);
         // I
+        glColor3f(1.0,0,0);
         vertical(x+27,y,1.002);
         // S
         glColor3f(1.0,1.0,0);
