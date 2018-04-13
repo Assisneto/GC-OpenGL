@@ -79,12 +79,9 @@ void display() {
     glColor3f(1.0, 1.0, 1.0);
     glBegin(GL_LINES); 
     estrela(x,y,1);
-    estrela(x,y,2);
     estrela(x,y,3);
     estrela(x,y,5);
-    estrela(x,y,6);
     estrela(x,y,7);
-    estrela(x,y,8);
 
     glEnd();
     glFlush();
