@@ -37,18 +37,14 @@ void diagonalIVTASC(int * x, int * y, float z){
     *y = (((*y)*2)*z)/2;
 
 }
-void estrela(int x, int y, float z){
-    z = z+1;
-    glVertex2d(x,y);
-    glVertex2d((x+10)*z,(y+10)*z);
-    glVertex2d((x+10)*z,(y+10)*z);
-    glVertex2d(x,(10+y)*z);
-    glVertex2d(x,(10+y)*z);
-    glVertex2d((x+10)*z,y);
-    glVertex2d((x+10)*z,y);
-    glVertex2d(((x+18)*z)/2,(y+18)*z);
-    glVertex2d(((x+18)*z)/2,(y+18)*z);
-    glVertex2d(x,y);
+void estrela(int x, int y, int tamanho){
+    glBegin(GL_LINE_STRIP); 
+    glVertex2d(x-(tamanho/2),y-(tamanho/2));
+    glVertex2d(x+(tamanho*4),y+(tamanho*4));
+    glVertex2d(x-(tamanho/4),y+(tamanho*4));
+    glVertex2d(x+(tamanho*4),y-(tamanho/4));
+    glVertex2d(x+(tamanho*2),y+(tamanho*6));
+    glVertex2d(x-(tamanho/2),y-(tamanho/2));
 
 }
 
@@ -77,11 +73,10 @@ void display() {
     int z = 3;
     glClear(GL_COLOR_BUFFER_BIT);
     glColor3f(1.0, 1.0, 1.0);
-    glBegin(GL_LINES); 
-    estrela(x,y,1);
-    estrela(x,y,3);
-    estrela(x,y,5);
-    estrela(x,y,7);
+    
+    estrela(x,y,10);
+   //estrela(x,y,25);
+   //estrela(x,y,35);
 
     glEnd();
     glFlush();
