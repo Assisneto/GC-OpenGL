@@ -9,13 +9,13 @@ void init (void);
 void display (void);
 void keyboard (unsigned char key, int x, int y);
 
-
+int t = 10, ex = 0, ey = 0, graus = 0; 
 
 
 int main (int argc, char**argv){
     glutInit(&argc,argv);
     glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB);
-    glutInitWindowSize(256,256);
+    glutInitWindowSize(500,500);
     glutInitWindowPosition(100,100);
     glutCreateWindow("Desenhando um Tabuleiro");
     init();
@@ -38,15 +38,13 @@ void quadradoteste (float x, float y){
     glEnd();
 }
 
-void barra (void){
-    float t = 10.0;
-    float x = 0.0;
+void barra (float tamanho, float ex, float ey){
     glColor3f(0.5,0.5,1.0);
     glBegin(GL_QUADS);
-    glVertex2f(t*(x+0.0),t*(0.0));
-    glVertex2f(t*(x+0.0),t*(4.0));
-    glVertex2f(t*(x+1.0),t*(4.0));
-    glVertex2f(t*(x+1.0),t*(0.0));
+    glVertex2f(t*(ex+0.0),t*(ey+0.0));
+    glVertex2f(t*(ex+0.0),t*(ey+4.0));
+    glVertex2f(t*(ex+1.0),t*(ey+4.0));
+    glVertex2f(t*(ex+1.0),t*(ey+0.0));
     glEnd();
 }
 void quadrado (void){
@@ -111,21 +109,33 @@ void ele (void){
 }
 
 void display (void){
-    int t = 10;
     glClear(GL_COLOR_BUFFER_BIT);
-    barra();
-    quadrado();
-    tee();
-    zee();
-    ele();
-    glFlush();  
+    glRotated(graus,0,0,1);
+    barra(t,ex,ey);
+    glFlush();
 }
 
 void keyboard (unsigned char key, int x, int y){
     switch(key){
-        case 27:
-            exit(0);
+        case 'a':
+            ex -= 1;
             break;
-    }
+        case 'd':
+            ex += 1;
+             break;
+        case 'w':
+            ey += 1;
+            break;
+        case 's':
+            ey -= 1;
+            break;
+        case 'q':
+            graus -= 1;
+            break;
+        case 'e':
+            graus += 1;
+            break;    
+        }
+    glutPostRedisplay();
 }
 
